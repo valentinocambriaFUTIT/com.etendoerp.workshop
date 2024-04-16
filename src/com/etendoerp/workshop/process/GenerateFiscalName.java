@@ -1,6 +1,8 @@
 package com.etendoerp.workshop.process;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.criterion.Restrictions;
 import org.openbravo.dal.service.OBCriteria;
 import org.openbravo.dal.service.OBDal;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class GenerateFiscalName extends DalBaseProcess {
 
+    private static final Logger log = LogManager.getLogger();
     private final static String EMPLOYEE = "Employee";
     @Override
     protected void doExecute(ProcessBundle bundle) throws Exception {
@@ -44,7 +47,7 @@ public class GenerateFiscalName extends DalBaseProcess {
             }
 
         } catch (Exception e){
-
+            log.error(e.getMessage());
         }
     }
 }
